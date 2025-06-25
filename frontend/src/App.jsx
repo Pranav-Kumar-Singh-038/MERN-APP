@@ -6,14 +6,14 @@ function App() {
   const [newTask, setNewTask] = useState('');
 
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:3000/tasks');
+    const res = await fetch('http://<ec2_ip_of_backend>:3000/tasks');
     const data = await res.json();
     setTasks(data);
   };
 
   const addTask = async () => {
     if (!newTask.trim()) return;
-    await fetch('http://localhost:3000/tasks', {
+    await fetch('http://<ec2_ip_of_backend>:3000/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: newTask }),
